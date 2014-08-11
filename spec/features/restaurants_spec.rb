@@ -54,7 +54,7 @@ describe 'restaurants' do
 			click_link('Edit Vanilla Black')
 			expect(page).to have_content('Name')
 			fill_in 'Name', with: "The Gate"
-			click_button 'Save Restaurant'
+			click_button 'Update Restaurant'
 			expect(page).to have_content('The Gate')
 			expect(page).not_to have_content('Vanilla Black')
 		end

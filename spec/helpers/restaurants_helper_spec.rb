@@ -4,7 +4,7 @@ require 'rails_helper'
 			visit ('/restaurants/new')
 			fill_in 'Name', with: "Vanilla Black"
 			fill_in 'Cuisine', with: "Vegetarian"
-			click_button 'Save Restaurant'
+			click_button 'Create Restaurant'
 	end
 
 # Specs in this file have access to a helper object that includes
