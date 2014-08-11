@@ -13,9 +13,50 @@ describe 'restaurants' do
 	context 'when the DB contains restaurants' do 
 
 		it 'they should be displayed on the homepage' do
-			Restaurant.create(name: "Vanilla Black")
+			Restaurant.create(name: "Vanilla Black", cuisine: "Vegetarian")
 			visit ('/restaurants')
 			expect(page).to have_content('Vanilla Black')
+		end
+
+	end
+
+	context 'users can add restaurants' do 
+
+		it 'by following the "add restaurant" link which should lead to a form for adding resuarants' do
+			visit ('/restaurants')
+			click_link('Add a restaurant')
+			expect(page).to have_content('Name')
+			expect(page).to have_content('Cuisine')
+		end
+
+		it 'and then filling in the form' do
+			add_restaurant
+			expect(Restaurant.count).to eq(1)
+			expect(page).to have_content("Vanilla Black")
+		end
+
+	end
+
+	context 'restaurants can be' do 
+
+		before(:each) {add_restaurant}
+
+		it 'deleted' do
+			visit ('/restaurants')
+			expect(page).to have_content('Vanilla Black')
+			click_link('Delete Vanilla Black')
+			expect(page).not_to have_content('Vanilla Black')
+		end
+
+		it 'edited' do 
+			visit ('/restaurants')
+			expect(page).to have_content('Vanilla Black')
+			click_link('Edit Vanilla Black')
+			expect(page).to have_content('Name')
+			fill_in 'Name', with: "The Gate"
+			click_button 'Save Restaurant'
+			expect(page).to have_content('The Gate')
+			expect(page).not_to have_content('Vanilla Black')
 		end
 
 	end

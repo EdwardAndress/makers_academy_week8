@@ -1,5 +1,12 @@
 require 'rails_helper'
 
+	def add_restaurant
+			visit ('/restaurants/new')
+			fill_in 'Name', with: "Vanilla Black"
+			fill_in 'Cuisine', with: "Vegetarian"
+			click_button 'Save Restaurant'
+	end
+
 # Specs in this file have access to a helper object that includes
 # the RestaurantsHelper. For example:
 #
