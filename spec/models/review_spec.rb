@@ -1,5 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Review, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+	it 'must be submitted with a rating' do
+		review = Review.new()
+		expect(review).to have(1).error_on(:rating)
+	end
+
+	it 'must be associated with a restaurant' do
+		review = Review.new()
+		expect(review).to have(1).error_on(:restaurant_id)
+	end
+
 end
