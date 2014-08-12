@@ -18,6 +18,11 @@ describe 'reviews' do
 			expect(page).to have_content('Awesome (5/5)')
 		end
 
+		it 'and the average rating for each restaurant should be displayed on the home page' do
+			leave_2_reviews
+			expect(page).to have_content('Average rating: 4/5')
+		end
+
 	end
 
 end
