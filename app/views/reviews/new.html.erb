@@ -8,3 +8,14 @@
 	<%= f.submit 'Submit review'%>
 </p>
 <% end %>
+
+<% if @review.errors.any? %>
+	<section id="review-form-errors">
+		<h3><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved: </h3>
+		<ul>
+			<% @review.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		</ul>
+	</section>
+<% end %>
