@@ -5,10 +5,10 @@ class Restaurant < ActiveRecord::Base
 	validates :cuisine, presence: true
 
 	def average_rating
-			ratings = self.reviews.map {|review| review.rating}
-			total = ratings.inject {|sum, rating| sum + rating}
-			ave = total.round(2) / ratings.count if total
-			ave.round(1) if ave
+		return 'As yet this restaurant has not been reviewed' if reviews.none?
+		reviews.inject(0)  do |sum, review| 
+			sum + review.rating.to_f
+		end / reviews.count
 	end
 
 end

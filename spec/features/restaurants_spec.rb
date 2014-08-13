@@ -59,6 +59,13 @@ describe 'restaurants' do
 			expect(page).not_to have_content('Vanilla Black')
 		end
 
+		it 'must know the average rating after a rating is left' do
+			add_restaurant 
+			leave_2_reviews
+			restaurant = Restaurant.first
+			expect(restaurant.average_rating).to eq(4)
+		end
+
 	end
 
 end

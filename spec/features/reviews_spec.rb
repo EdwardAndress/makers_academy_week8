@@ -15,12 +15,14 @@ describe 'reviews' do
 			fill_in 'Comments', with: "Awesome"
 			select '5', from: 'Rating'
 			click_button('Submit review')
-			expect(page).to have_content('Awesome (5/5)')
+			expect(page).to have_content('Awesome (★★★★★)')
 		end
 
-		it 'and the average rating for each restaurant should be displayed on the home page' do
-			leave_3_reviews
-			expect(page).to have_content('Average rating: 3.3/5')
+		it 'displays the average rating in stars' do
+			leave_review("Good", 4)
+			leave_review("Great", 5)
+
+			expect(page).to have_content('Average rating: ★★★★★')
 		end
 
 	end

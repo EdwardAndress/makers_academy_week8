@@ -1,3 +1,11 @@
+def leave_review(comments, rating)
+  visit ('/restaurants')
+  click_link('Review Vanilla Black')
+  fill_in 'Comments', with: comments
+  select rating, from: 'Rating'
+  click_button('Submit review')
+end
+
 def leave_2_reviews
   visit ('/restaurants')
   click_link('Review Vanilla Black')
