@@ -17,11 +17,12 @@
 				<% restaurant.reviews.each do |review| %>
 					<li>
 						<article id="review">
-						<%= "#{review.comments} (#{star_rating(review.rating)}) - Posted #{time_ago_in_words(review.created_at)} ago - with " %><%= review.endorsements.count%> endorsements
-						</article>
+							<%= "#{review.comments} (#{star_rating(review.rating)}) - Posted #{time_ago_in_words(review.created_at)} ago " %>
 						<footer id="review-endorsements">
-							<%= link_to "Endorse", review_endorsements_path(review), method: :post%>
+							<span class="endorsement-count"><%= review.endorsements.count%></span> endorsements
+							<%= link_to 'Endorse', review_endorsements_path(review), class: 'endorsement-link' %>
 						</footer>
+						</article>
 					</li>
 				<% end %>
 			</ul>
