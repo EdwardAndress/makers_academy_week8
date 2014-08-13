@@ -5,4 +5,5 @@ class Review < ActiveRecord::Base
 
   	belongs_to :restaurant
   	has_many :endorsements
+  	has_many :negative_endorsements
 end

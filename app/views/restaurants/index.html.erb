@@ -19,8 +19,13 @@
 						<article id="review">
 							<%= "#{review.comments} (#{star_rating(review.rating)}) - Posted #{time_ago_in_words(review.created_at)} ago " %>
 						<footer id="review-endorsements">
-							<span class="endorsement-count"><%= review.endorsements.count%></span> endorsements
-							<%= link_to 'Endorse', review_endorsements_path(review), class: 'endorsement-link' %>
+
+							<span class="endorsement-count"><%= review.endorsements.count%></span> thumbs up
+							<%= link_to 'Thumbs up!', review_endorsements_path(review), class: 'endorsement-link' %>
+
+							<span class="negative-endorsement-count"><%= review.negative_endorsements.count%></span> thumbs down
+							<%= link_to 'Thumbs down', review_negative_endorsements_path(review), class: 'negative-endorsement-link' %>
+
 						</footer>
 						</article>
 					</li>
