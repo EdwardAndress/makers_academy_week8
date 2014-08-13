@@ -17,7 +17,7 @@
 				<% restaurant.reviews.each do |review| %>
 					<li>
 						<article id="review">
-						<%= "#{review.comments} (#{star_rating(review.rating)})" %>
+						<%= "#{review.comments} (#{star_rating(review.rating)}) - #{time_ago_in_words(review.created_at)}" %>
 						</article>
 					</li>
 				<% end %>
