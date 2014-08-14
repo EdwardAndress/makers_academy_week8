@@ -1,5 +1,16 @@
 require 'rails_helper'
 
+describe 'user needs to be logged in to create a restaurant' do 
+
+	it 'and will be prompted to do so when clicking on the add-restaurant link, if not already signed in' do
+		visit '/restaurants'
+		click_link 'Add a restaurant'
+
+		expect(page).to have_content('Sign in')
+	end
+
+end
+
 describe 'restaurants' do 
 
 	context 'when the DB is created and no restaurants have been added' do 
@@ -22,6 +33,11 @@ describe 'restaurants' do
 
 	context 'users can add restaurants' do 
 
+		before do
+			eddie = User.create(email: 'eddie_andress@hotmail.com', password: '12345678', password_confirmation: '12345678')
+			login_as(eddie)
+		end
+
 		it 'by following the "add restaurant" link which should lead to a form for adding resuarants' do
 			visit ('/restaurants')
 			click_link('Add a restaurant')
@@ -39,7 +55,12 @@ describe 'restaurants' do
 
 	context 'restaurants can be' do 
 
-		before(:each) {add_restaurant}
+		before do
+
+			eddie = User.create(email: 'eddie_andress@hotmail.com', password: '12345678', password_confirmation: '12345678')
+			login_as(eddie)
+			add_restaurant
+		end
 
 		it 'deleted' do
 			visit ('/restaurants')

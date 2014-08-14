@@ -1,5 +1,6 @@
+<header>
 <a href="/restaurants/new">Add a restaurant</a>
-
+</header>
 <% if @restaurants.any? %>
 	<% @restaurants.each do |restaurant| %>
 	<section class="restaurant-container">
@@ -21,7 +22,7 @@
 						<footer id="review-endorsements">
 
 							<span class="endorsement-count"><%= review.endorsements.count%></span> thumbs up
-							<%= link_to 'Thumbs up!', review_endorsements_path(review), class: 'endorsement-link' %>
+							<%= link_to 'Thumbs up!', review_endorsements_path(review), class: 'endorsement-link' %><br>
 
 							<span class="negative-endorsement-count"><%= review.negative_endorsements.count%></span> thumbs down
 							<%= link_to 'Thumbs down', review_negative_endorsements_path(review), class: 'negative-endorsement-link' %>

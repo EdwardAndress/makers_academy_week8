@@ -1,3 +1,17 @@
+header {
+	height: 100px;
+	background-color: f777;
+	width: 95%;
+	border: solid 1px black;
+	left: 10%;
+}
+
+header a {
+	position: relative;
+	top: 70%;
+	left: 1%;
+}
+
 .restaurant {
 	width: 30%;
 	border: solid 2px;
@@ -8,8 +22,3 @@
 .restaurant-container li {
 	list-style-type: none;
 }
-
-.restaurant li {
-	list-style-type: circle;
-}
-
