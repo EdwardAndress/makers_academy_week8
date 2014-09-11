@@ -1,5 +1,5 @@
 <header>
-<a href="/restaurants/new">Add a restaurant</a>
+<a id="add-restaurant" href="/restaurants/new">Add a restaurant</a>
 </header>
 <% if @restaurants.any? %>
 	<% @restaurants.each do |restaurant| %>
@@ -40,4 +40,6 @@
 <% else %>
 	As yet we have no restaurants listed for this area
 <% end %>
+
+
 

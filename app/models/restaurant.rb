@@ -1,5 +1,6 @@
 class Restaurant < ActiveRecord::Base
 	has_many :reviews
+	belongs_to :user
 
 	validates :name, uniqueness: true, length: { minimum: 3 }
 	validates :cuisine, presence: true

@@ -7,9 +7,20 @@
   <meta charset='utf8'>
 </head>
 <body>
+		<% if flash[:notice] %>
+		<%= flash[:notice]%>
+		<% end %>
+	<% if user_signed_in? %>
+		Logged in as <%= current_user.email %>
+		<%= link_to 'Sign out', destroy_user_session_path, method: :delete  %>
+	<% else %>
+		<%= link_to 'Sign in', new_user_session_path %>
+		<%= link_to 'Sign up', new_user_registration_path %>
+	<% end %>
 
 <%= yield %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  
 
 </body>
 </html>

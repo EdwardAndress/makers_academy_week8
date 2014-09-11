@@ -11,6 +11,8 @@ class RestaurantsController < ApplicationController
 
 	def create
 		@restaurant = Restaurant.new(restaurant_params)
+		@restaurant.user = current_user
+
 
 		if @restaurant.save
 			redirect_to ('/restaurants')
@@ -20,19 +22,25 @@ class RestaurantsController < ApplicationController
 	end
 
 	def edit
-		@restaurant = Restaurant.find(params[:id])
+		@restaurant = current_user.restaurants.find(params[:id])
+	rescue ActiveRecord::RecordNotFound
+		flash[:notice] = 'You are not authorised to edit this entry'
+		redirect_to('/restaurants')
 	end
 
 	def update
-		@restaurant = Restaurant.find(params[:id])
+		@restaurant = current_user.restaurants.find(params[:id])
 		@restaurant.update(restaurant_params)
 
-		redirect_to ('/restaurants')
+		redirect_to('/restaurants')
 	end
 
 	def destroy
-		@restaurant = Restaurant.find(params[:id])
+		@restaurant = current_user.restaurants.find(params[:id])
 		@restaurant.destroy
+	rescue ActiveRecord::RecordNotFound
+		flash[:notice] = 'You are not authorised to delete this entry'
+	ensure
 		redirect_to ('/restaurants')
 	end
 

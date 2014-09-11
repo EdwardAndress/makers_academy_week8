@@ -53,37 +53,19 @@ describe 'restaurants' do
 
 	end
 
-	context 'restaurants can be' do 
+
+	context 'the restaurant' do
 
 		before do
-
-			eddie = User.create(email: 'eddie_andress@hotmail.com', password: '12345678', password_confirmation: '12345678')
-			login_as(eddie)
+			bob = User.create(email: 'bob@bob.com', password: '12345678', password_confirmation: '12345678' )
+			login_as(bob)
 			add_restaurant
-		end
+		end	
 
-		it 'deleted' do
-			visit ('/restaurants')
-			expect(page).to have_content('Vanilla Black')
-			click_link('Delete Vanilla Black')
-			expect(page).not_to have_content('Vanilla Black')
-		end
-
-		it 'edited' do 
-			visit ('/restaurants')
-			expect(page).to have_content('Vanilla Black')
-			click_link('Edit Vanilla Black')
-			expect(page).to have_content('Name')
-			fill_in 'Name', with: "The Gate"
-			click_button 'Update Restaurant'
-			expect(page).to have_content('The Gate')
-			expect(page).not_to have_content('Vanilla Black')
-		end
-
-		it 'must know the average rating after a rating is left' do
-			add_restaurant 
+		it 'must know the average rating after a rating is left' do 
 			leave_2_reviews
 			restaurant = Restaurant.first
+			expect(page).to have_content('OK')
 			expect(restaurant.average_rating).to eq(4)
 		end
 
