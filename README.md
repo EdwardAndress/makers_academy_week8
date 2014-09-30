@@ -26,6 +26,8 @@
 ####Set it up:
 ```sh
 $ git clone https://github.com/EdwardAndress/makers_academy_week8.git
+$ cd makers_academy_week8
+$ bundle install
 ```
 
 ####Test it:
@@ -37,6 +39,5 @@ $ rspec
 ####Run it:
 ```sh
 $ cd makers_academy_week8
-$ bundle install
 $ rackup
 ```
