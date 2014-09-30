@@ -22,3 +22,21 @@
  * Active Record
  * Devise
  * AJAX
+
+####Set it up:
+```sh
+$ git clone https://github.com/EdwardAndress/makers_academy_week8.git
+```
+
+####Test it:
+```sh
+$ cd makers_academy_week8
+$ rspec
+```
+
+####Run it:
+```sh
+$ cd makers_academy_week8
+$ bundle install
+$ rackup
+```
