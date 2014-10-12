@@ -1,4 +1,4 @@
-###Makers Academy Week 8: Yelp Clone
+###Makers Academy Week 8: Yelp Clone - Work In Progress!
 -----------------------------------------
 
 ####Specification:
