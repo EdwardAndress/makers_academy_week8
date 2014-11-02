@@ -1,4 +1,4 @@
-###Makers Academy Week 8: Yelp Clone - Work In Progress!
+###[Makers Academy] Week 8: Yelp Clone - Work In Progress!
 -----------------------------------------
 
 ####Specification:
@@ -41,3 +41,4 @@ $ rspec
 $ cd makers_academy_week8
 $ rackup
 ```
+[Makers Academy]: http://makersacademy.com
